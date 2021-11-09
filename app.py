@@ -12,7 +12,7 @@ app = dash.Dash(
 
 server = app.server
 
-df = pd.read_csv('db.csv')
+df = pd.read_csv('db.gz', compression='gzip')
 fig = px.scatter_geo(df,
     locations="Code",  # Alpha-3 ISO code
     color="Income", # Income group (HIC or LMIC)
