@@ -4,7 +4,126 @@
     "href": "sections/concepts.html",
     "title": "Concepts",
     "section": "",
-    "text": "path_cncpt = get_path('INOVA_COVID', 'concepts.csv')\ndf_cncpt = pd.read_csv(path_cncpt)\ndf_cncpt\n\n\n\n\n\n  \n    \n      \n      ano\n      tags\n      concept\n      relevance\n      count\n    \n  \n  \n    \n      0\n      2020\n      North,National,World\n      prior treatment experience\n      0.571\n      1\n    \n    \n      1\n      2020\n      North,National,World\n      preclinical evaluation\n      3.787\n      8\n    \n    \n      2\n      2020\n      North,National,World\n      RNA-dependent RNA polymerase\n      36.987\n      79\n    \n    \n      3\n      2020\n      North,National,World\n      cytotoxicity\n      31.684\n      85\n    \n    \n      4\n      2020\n      North,National,World\n      GAD scores\n      0.331\n      1\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      3783043\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      Data Analytics Architecture\n      0.721\n      1\n    \n    \n      3783044\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      multimedia systems\n      0.663\n      1\n    \n    \n      3783045\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      traffic videos\n      0.658\n      1\n    \n    \n      3783046\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      study tips\n      0.003\n      1\n    \n    \n      3783047\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      EWB subscale\n      0.623\n      1\n    \n  \n\n3783048 rows × 5 columns\n\n\n\n\ndf_select = df_cncpt[(\n    df_cncpt['ano'] == 2020\n  ) & (\n    df_cncpt['tags'] == 'North,National,World'\n)].sort_values(by='relevance', ascending=False)\ndf_select\n\n\n\n\n\n  \n    \n      \n      ano\n      tags\n      concept\n      relevance\n      count\n    \n  \n  \n    \n      842372\n      2020\n      North,National,World\n      COVID-19\n      11525.836\n      28342\n    \n    \n      1053123\n      2020\n      North,National,World\n      patients\n      9318.802\n      21499\n    \n    \n      419891\n      2020\n      North,National,World\n      pandemic\n      7818.608\n      24384\n    \n    \n      1263921\n      2020\n      North,National,World\n      study\n      6428.522\n      21104\n    \n    \n      1474748\n      2020\n      North,National,World\n      COVID-19 pandemic\n      6055.233\n      14544\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      55532\n      2020\n      North,National,World\n      virtual atmosphere\n      0.000\n      1\n    \n    \n      2460167\n      2020\n      North,National,World\n      Football Finance\n      0.000\n      1\n    \n    \n      2055933\n      2020\n      North,National,World\n      Grammaticos\n      0.000\n      1\n    \n    \n      2881493\n      2020\n      North,National,World\n      local political decisions\n      0.000\n      1\n    \n    \n      1733858\n      2020\n      North,National,World\n      science–practice divide\n      0.000\n      1\n    \n  \n\n502716 rows × 5 columns\n\n\n\n\nfig = px.pie(df_select[:20], values='relevance', names='concept', title='Concepts')\nfig.show()"
+    "text": "import pandas as pd\nfrom utils import get_path\n\nfrom plotly import express as px, io as pio\npd.options.plotting.backend = 'plotly'\npio.renderers.default = 'plotly_mimetype+notebook_connected'"
+  },
+  {
+    "objectID": "sections/concepts.html#load-table",
+    "href": "sections/concepts.html#load-table",
+    "title": "Concepts",
+    "section": "Load table",
+    "text": "Load table\n\npath_cncpt = get_path('INOVA_COVID', 'concepts.csv')\ndf_cncpt = pd.read_csv(path_cncpt)\ndf_cncpt\n\n\n\n\n\n  \n    \n      \n      ano\n      tags\n      concept\n      relevance\n      count\n    \n  \n  \n    \n      0\n      2020\n      North,National,World\n      prior treatment experience\n      0.571\n      1\n    \n    \n      1\n      2020\n      North,National,World\n      preclinical evaluation\n      3.787\n      8\n    \n    \n      2\n      2020\n      North,National,World\n      RNA-dependent RNA polymerase\n      36.987\n      79\n    \n    \n      3\n      2020\n      North,National,World\n      cytotoxicity\n      31.684\n      85\n    \n    \n      4\n      2020\n      North,National,World\n      GAD scores\n      0.331\n      1\n    \n    \n      ...\n      ...\n      ...\n      ...\n      ...\n      ...\n    \n    \n      3783043\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      Data Analytics Architecture\n      0.721\n      1\n    \n    \n      3783044\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      multimedia systems\n      0.663\n      1\n    \n    \n      3783045\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      traffic videos\n      0.658\n      1\n    \n    \n      3783046\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      study tips\n      0.003\n      1\n    \n    \n      3783047\n      2021\n      South_North,Shared_L,Inter_Blocs,International...\n      EWB subscale\n      0.623\n      1\n    \n  \n\n3783048 rows × 5 columns"
+  },
+  {
+    "objectID": "sections/concepts.html#tags",
+    "href": "sections/concepts.html#tags",
+    "title": "Concepts",
+    "section": "Tags",
+    "text": "Tags\n\ndf_cncpt['tags'].value_counts()\n\nNorth,National,World                                    1484578\nSouth,National,World                                     964534\nNorths,Intra_Bloc,International,World                    468983\nSouth_L,Bloc_L,Inter_Blocs,International,World           222955\nSouth_North,Shared_L,Inter_Blocs,International,World     202430\nNorth_L,Bloc_L,Inter_Blocs,International,World           201483\nNorth_South,Shared_L,Inter_Blocs,International,World     122037\nSouths,Intra_Bloc,International,World                    116048\nName: tags, dtype: int64"
+  },
+  {
+    "objectID": "sections/concepts.html#world",
+    "href": "sections/concepts.html#world",
+    "title": "Concepts",
+    "section": "World",
+    "text": "World\n\n2020\n\ndf_select = select_df(df_cncpt, 'World', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'World', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'World')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#national",
+    "href": "sections/concepts.html#national",
+    "title": "Concepts",
+    "section": "National",
+    "text": "National\n\n2020\n\ndf_select = select_df(df_cncpt, 'National', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'National', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'National')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#international",
+    "href": "sections/concepts.html#international",
+    "title": "Concepts",
+    "section": "International",
+    "text": "International\n\n2020\n\ndf_select = select_df(df_cncpt, 'International', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'International', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'International')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#intra_bloc",
+    "href": "sections/concepts.html#intra_bloc",
+    "title": "Concepts",
+    "section": "Intra_Bloc",
+    "text": "Intra_Bloc\n\n2020\n\ndf_select = select_df(df_cncpt, 'Intra_Bloc', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'Intra_Bloc', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'Intra_Bloc')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#inter_blocs",
+    "href": "sections/concepts.html#inter_blocs",
+    "title": "Concepts",
+    "section": "Inter_Blocs",
+    "text": "Inter_Blocs\n\n2020\n\ndf_select = select_df(df_cncpt, 'Inter_Blocs', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'Inter_Blocs', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'Inter_Blocs')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#shared_l",
+    "href": "sections/concepts.html#shared_l",
+    "title": "Concepts",
+    "section": "Shared_L",
+    "text": "Shared_L\n\n2020\n\ndf_select = select_df(df_cncpt, 'Shared_L', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'Shared_L', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'Shared_L')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#bloc_l",
+    "href": "sections/concepts.html#bloc_l",
+    "title": "Concepts",
+    "section": "Bloc_L",
+    "text": "Bloc_L\n\n2020\n\ndf_select = select_df(df_cncpt, 'Bloc_L', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'Bloc_L', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'Bloc_L')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#north_l",
+    "href": "sections/concepts.html#north_l",
+    "title": "Concepts",
+    "section": "North_L",
+    "text": "North_L\n\n2020\n\ndf_select = select_df(df_cncpt, 'North_L', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'North_L', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'North_L')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#south_l",
+    "href": "sections/concepts.html#south_l",
+    "title": "Concepts",
+    "section": "South_L",
+    "text": "South_L\n\n2020\n\ndf_select = select_df(df_cncpt, 'South_L', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'South_L', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'South_L')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#north_south",
+    "href": "sections/concepts.html#north_south",
+    "title": "Concepts",
+    "section": "North_South",
+    "text": "North_South\n\n2020\n\ndf_select = select_df(df_cncpt, 'North_South', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'North_South', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'North_South')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#south_north",
+    "href": "sections/concepts.html#south_north",
+    "title": "Concepts",
+    "section": "South_North",
+    "text": "South_North\n\n2020\n\ndf_select = select_df(df_cncpt, 'South_North', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'South_North', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'South_North')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#norths",
+    "href": "sections/concepts.html#norths",
+    "title": "Concepts",
+    "section": "Norths",
+    "text": "Norths\n\n2020\n\ndf_select = select_df(df_cncpt, 'Norths', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'Norths', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'Norths')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#souths",
+    "href": "sections/concepts.html#souths",
+    "title": "Concepts",
+    "section": "Souths",
+    "text": "Souths\n\n2020\n\ndf_select = select_df(df_cncpt, 'Souths', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'Souths', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'Souths')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#north",
+    "href": "sections/concepts.html#north",
+    "title": "Concepts",
+    "section": "North",
+    "text": "North\n\n2020\n\ndf_select = select_df(df_cncpt, 'North,', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'North,', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'North,')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
+  },
+  {
+    "objectID": "sections/concepts.html#south",
+    "href": "sections/concepts.html#south",
+    "title": "Concepts",
+    "section": "South",
+    "text": "South\n\n2020\n\ndf_select = select_df(df_cncpt, 'South,', 2020)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2021\n\ndf_select = select_df(df_cncpt, 'South,', 2021)\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()\n\n\n                                                \n\n\n\n\n2020 & 2021\n\ndf_select = select_df(df_cncpt, 'South,')\nfig = px.pie(df_select, values='values', names='concept')\nfig.show()"
   },
   {
     "objectID": "sections/publications.html",
