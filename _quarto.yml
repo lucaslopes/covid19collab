@@ -1,0 +1,28 @@
+project:
+  type: website
+  render: ['README.md', 'sections/*.ipynb']
+
+website:
+  title: "Inova Covid-19"
+  description: 'Scientific collaboration network between countries during the Covid-19 pandemic.'
+  sidebar:
+    search: true
+    style: "docked"
+    background: danger
+    tools:
+      - icon: github
+        href: https://github.com/lucaslopes/covid19collab
+    contents:
+      - README.md
+      - section: 'Data source'
+        contents:
+          - sections/publications.ipynb
+      - section: 'Results'
+        contents:
+          - sections/concepts.ipynb
+
+format:
+  html:
+    theme: litera
+    css: styles.css
+    toc: true
